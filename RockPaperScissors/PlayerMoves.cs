@@ -3,5 +3,6 @@
 public enum PlayerMoves
 {
     Rock,
-    Paper
+    Paper,
+    Scissors
 }

@@ -30,4 +30,30 @@ public class Play
             Assert.That(actual, Is.EqualTo(Outcomes.PlayerWins));
         }
     }
+
+    [TestFixture]
+    public class ScissorsBeatsPaper
+    {
+        [Test]
+        public void GivenPlayerScissors_OpponentPaper_ShouldReturnPlayerWins()
+        {
+            // Arrange
+            var sut = new RockPaperScissors();
+            // Act
+            var actual = sut.Play(PlayerMoves.Scissors, PlayerMoves.Paper);
+            // Assert
+            Assert.That(actual, Is.EqualTo(Outcomes.PlayerWins));
+        }
+
+        [Test]
+        public void GivenPlayerPaper_OpponentScissors_ShouldReturnPlayerLoses()
+        {
+            // Arrange
+            var sut = new RockPaperScissors();
+            // Act
+            var actual = sut.Play(PlayerMoves.Paper, PlayerMoves.Scissors);
+            // Assert
+            Assert.That(actual, Is.EqualTo(Outcomes.PlayerLoses));
+        }
+    }
 }
