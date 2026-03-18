@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockPaperScissors", "RockPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockPaperScissors.Tests", "RockPaperScissors.Test\RockPaperScissors.Tests.csproj", "{3C879230-AB97-F266-49A4-BC0CC34B193D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzer", "FizzBuzz\FizzBuzzer.csproj", "{E37883A4-C662-4BB2-91A8-077E2AAA2E4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz.Tests", "FizzBuzz.Tests\FizzBuzz.Tests.csproj", "{81049AA2-411B-4CA6-A000-FBD0AF87EFFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{3C879230-AB97-F266-49A4-BC0CC34B193D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C879230-AB97-F266-49A4-BC0CC34B193D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C879230-AB97-F266-49A4-BC0CC34B193D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E37883A4-C662-4BB2-91A8-077E2AAA2E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E37883A4-C662-4BB2-91A8-077E2AAA2E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E37883A4-C662-4BB2-91A8-077E2AAA2E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E37883A4-C662-4BB2-91A8-077E2AAA2E4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81049AA2-411B-4CA6-A000-FBD0AF87EFFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81049AA2-411B-4CA6-A000-FBD0AF87EFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81049AA2-411B-4CA6-A000-FBD0AF87EFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81049AA2-411B-4CA6-A000-FBD0AF87EFFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
