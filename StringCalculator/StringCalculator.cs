@@ -32,17 +32,16 @@ public class StringCalculator
 
     private static IEnumerable<int> ParseNumbers(string numbers, char delimiter)
     {
-        return numbers.Split(delimiter).Select(int.Parse);
+        return numbers.Split(delimiter, '\n').Select(int.Parse);
     }
 
     private static (string numbers, char delimiter) GetDelimiter(string input)
     {
-
         if (!input.StartsWith(CustomDelimiterPrefix))
             return (input, DefaultDelimiter);
 
         var delimiter = input[CustomDelimiterPrefix.Length];
-        var numbers = input.Substring(CustomDelimiterPrefix.Length + 1);
+        var numbers = input.Substring(CustomDelimiterPrefix.Length + 2);
 
         return (numbers, delimiter);
     }

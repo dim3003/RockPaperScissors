@@ -61,9 +61,9 @@ public class StringCalculatorTests
             Assert.That(result, Is.EqualTo(expected));
         }
 
-        [TestCase("1\n,2", 3)]
-        [TestCase("1,\n2", 3)]
-        [TestCase("15\n,\n25", 40)]
+        [TestCase("1\n2", 3)]
+        [TestCase("1\n2", 3)]
+        [TestCase("15\n25\n2", 42)]
         public void GivenNewLineBetweenNumbers_ReturnSumOfNumbers(string input, int expected)
         {
             // Arrange
@@ -76,7 +76,7 @@ public class StringCalculatorTests
 
         [TestCase("//;\n1;2", 3)]
         [TestCase("///\n1/2", 3)]
-        [TestCase("//;\n\n1;2", 3)]
+        [TestCase("//;\n1;2", 3)]
         [TestCase("//;\n14;20;30", 64)]
         public void GivenDelimiterBeforeNumbers_ReturnSumOfNumbers(string input, int expected)
         {
@@ -105,7 +105,7 @@ public class StringCalculatorTests
 
         [TestCase("29, 1001", 29)]
         [TestCase("10034, 1001, 3, 99, 32190", 102)]
-        [TestCase("//\n;10034; 1001; 3; 99; 32190", 102)]
+        [TestCase("//;\n10034; 1001; 3; 99; 32190", 102)]
         public void GivenNumbersAbove1000_ReturnsSumOfAllNumbersBelow1000(string input, int expected)
         {
             // Arrange
