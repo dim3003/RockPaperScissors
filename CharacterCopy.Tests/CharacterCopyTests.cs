@@ -146,13 +146,11 @@ public class CharacterCopyTests
 
 
 
-        [TestCase('\n')]
-        public void GivenNoCharacterBeforeNewLine_ShouldWriteNothing(
-            char firstChar,
-            params char[] nextChars)
+        [Test]
+        public void GivenNoCharacterBeforeNewLine_ShouldWriteNothing()
         {
             // Arrange
-            ISource source = CreateSource(firstChar, nextChars);
+            ISource source = CreateSource('\n', []);
 
             var destination = Substitute.For<IDestination>();
 
@@ -162,7 +160,7 @@ public class CharacterCopyTests
             sut.Copy();
 
             // Assert
-            destination.DidNotReceive().WriteChar(firstChar);
+            destination.DidNotReceive().WriteChar('\n');
             destination.DidNotReceive().WriteChar(Arg.Any<char>());
         }
     }
