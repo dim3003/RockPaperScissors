@@ -14,6 +14,11 @@ public class Copier
 
     public void Copy()
     {
-        _destination.WriteChar(_source.ReadChar());
+        var nextChar = _source.ReadChar();
+        while(nextChar != '\n')
+        {
+            _destination.WriteChar(nextChar);
+            nextChar = _source.ReadChar();
+        }
     }
 }

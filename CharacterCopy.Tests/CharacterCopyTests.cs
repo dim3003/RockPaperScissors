@@ -6,25 +6,62 @@ namespace CharacaterCopy.Tests;
 [TestFixture]
 public class CharacterCopyTests
 {
-    [TestCase('a', '\n')]
-    [TestCase('!', '\n')]
-    [TestCase('B', '\n')]
-    public void Copy_GivenSingleCharacterBeforeNewLine_ShouldWriteThatCharacter(
-        char firstChar,
-        params char[] nextChars)
+    [TestFixture]
+    public class Copy
     {
-        // Arrange
-        var source = Substitute.For<ISource>();
+        private static ISource CreateSource(char firstChar, char[] nextChars)
+        {
+            var source = Substitute.For<ISource>();
+            source.ReadChar().Returns(firstChar, nextChars);
+            return source;
+        }
 
-        var destination = Substitute.For<IDestination>();
+        [TestCase('a', '\n')]
+        [TestCase('!', '\n')]
+        [TestCase('B', '\n')]
+        public void GivenSingleCharacterBeforeNewLine_ShouldWriteThatCharacter(
+            char firstChar,
+            params char[] nextChars)
+        {
+            // Arrange
+            ISource source = CreateSource(firstChar, nextChars);
 
-        var sut = new Copier(source, destination);
+            var destination = Substitute.For<IDestination>();
 
-        // Act
-        sut.Copy();
+            var sut = new Copier(source, destination);
 
-        // Assert
-        destination.Received(1).WriteChar(firstChar);
-        destination.Received(1).WriteChar(Arg.Any<char>());
+            // Act
+            sut.Copy();
+
+            // Assert
+            destination.Received(1).WriteChar(firstChar);
+            destination.Received(1).WriteChar(Arg.Any<char>());
+        }
+
+
+        [TestCase('a', 'x', '\n')]
+        [TestCase('u', 'v', 'e', 'm', 'd', '\n')]
+        public void GivenManyCharactersBeforeNewLine_ShouldWriteThoseCharacters(
+            char firstChar,
+            params char[] nextChars)
+        {
+            // Arrange
+            ISource source = CreateSource(firstChar, nextChars);
+
+            var destination = Substitute.For<IDestination>();
+
+            var sut = new Copier(source, destination);
+
+            // Act
+            sut.Copy();
+
+            // Assert
+            var allExpected = nextChars.Prepend(firstChar).Where(c => c != '\n');
+            foreach (var group in allExpected.GroupBy(c => c))
+            {
+                destination.Received(group.Count()).WriteChar(group.Key);
+            }
+            destination.DidNotReceive().WriteChar('\n');
+        }
     }
 }
