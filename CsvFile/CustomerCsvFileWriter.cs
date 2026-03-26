@@ -11,6 +11,11 @@ public class CustomerCsvFileWriter
 
     public void Write(string fileName, IEnumerable<Customer> customers)
     {
+        if (string.IsNullOrWhiteSpace(fileName))
+        {
+            throw new ArgumentException("File name cannot be null or whitespace.", nameof(fileName));
+        }
+
         foreach (var customer in customers)
         {
             _fileSystem.WriteLine(fileName, customer.ToString());
